@@ -39,7 +39,7 @@ def plan_tools_with_llm(query: str, registry: List) -> Plan:
 
     system_prompt = (
         "You are a planner that selects worker agents to satisfy a user query. "
-        "Return ONLY JSON with the shape {\\"steps\\":[{\\"step_id\\":0,\\"agent\\":...,\\"intent\\":...,\\"input_source\\":...},...]}. "
+        'Return ONLY JSON with the shape {"steps":[{"step_id":0,"agent":...,"intent":...,"input_source":...},...]}. '
         "input_source is either 'user_query' or 'step:X.output.result'."
     )
     user_prompt = json.dumps(
