@@ -89,6 +89,21 @@ def load_registry() -> List[AgentMetadata]:
             endpoint="https://example.com/deadline/handle",
             healthcheck="https://example.com/deadline/health",
         ),
+        AgentMetadata(
+            name="focus_enforcer_agent",
+            description="Monitors user focus and productivity by analyzing window activity. Uses LLM to calculate focus scores based on productive vs distraction keywords, determines if user is FOCUSED or DISTRACTED, and generates supervisor commands for interventions (notifications or strict popups). Requires activity history data with window titles.",
+            intents=[
+                "focus.analyze",
+                "focus.start_monitoring", 
+                "focus.stop_monitoring",
+                "focus.check_status",
+                "productivity.assess"
+            ],
+            type="http",
+            endpoint="http://localhost:8001/handle",  # Local endpoint for Focus Enforcer service
+            healthcheck="http://localhost:8001/health",
+            timeout_ms=60000,  # 60 seconds timeout for LLM analysis
+        ),
     ]
 
 
